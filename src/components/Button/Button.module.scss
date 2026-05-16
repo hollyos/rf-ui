@@ -1,0 +1,63 @@
+.button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-weight: var(--font-weight-semibold);
+  gap: var(--space-6);
+  justify-content: center;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+  white-space: nowrap;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+// Inline wrapper for the button's text content. No box-model of its own;
+// exists so plain-text labels live in a real text element.
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.size-md {
+  font-size: var(--font-size-sm);
+  height: 36px;
+  padding: 0 var(--space-16);
+}
+
+.size-sm {
+  font-size: var(--font-size-xs);
+  height: 28px;
+  padding: 0 var(--space-10);
+}
+
+.variant-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+}
+
+.variant-ghost {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-surface-muted);
+  }
+}

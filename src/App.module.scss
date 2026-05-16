@@ -1,0 +1,188 @@
+@use './styles/mixins' as *;
+
+.app {
+  background-color: var(--color-bg);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-height: 100vh;
+}
+
+// Skip link: visually hidden until focused, then pinned to the top-left
+// with a high z-index so it appears above the rail. Standard pattern.
+.skipLink {
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-weight: var(--font-weight-semibold);
+  left: var(--space-8);
+  padding: var(--space-8) var(--space-12);
+  position: fixed;
+  text-decoration: none;
+  top: var(--space-8);
+  transform: translateY(-200%);
+  transition: transform var(--transition-base);
+  z-index: 100;
+
+  &:focus,
+  &:focus-visible {
+    transform: translateY(0);
+  }
+}
+
+.leftRail {
+  background-color: var(--color-bg-rail);
+  display: flex;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+
+  // Programmatic-focus target shouldn't show a visible outline.
+  &:focus {
+    outline: none;
+  }
+
+  @include mobile {
+    // Mobile: off-canvas drawer.
+    // `visibility: hidden` removes the contents from the tab order when
+    // closed; delayed via the transition so the slide-out animation
+    // completes before the contents become non-interactive.
+    box-shadow: none;
+    inset: 0 auto 0 0;
+    position: fixed;
+    transform: translateX(-100%);
+    transition:
+      transform var(--transition-slow),
+      visibility 0s linear var(--transition-slow);
+    visibility: hidden;
+    z-index: var(--z-drawer);
+  }
+}
+
+.leftRailOpen {
+  @include mobile {
+    box-shadow: var(--shadow-drawer);
+    transform: translateX(0);
+    // Open immediately — no visibility delay.
+    transition:
+      transform var(--transition-slow),
+      visibility 0s linear 0s;
+    visibility: visible;
+  }
+}
+
+.main {
+  background-color: var(--color-bg);
+  min-width: 0;
+  padding: var(--space-32) var(--space-48) var(--space-96);
+  position: relative;
+
+  // Programmatic-focus target (skip-link / drawer-close return) — no
+  // visible outline since the user isn't navigating to a control.
+  &:focus {
+    outline: none;
+  }
+
+  @include tablet-down {
+    padding: var(--space-24) var(--space-24) 80px;
+  }
+
+  @include mobile {
+    padding: var(--space-16) var(--space-16) 80px;
+  }
+}
+
+.userAvatar {
+  bottom: var(--space-18);
+  left: var(--space-18);
+  position: fixed;
+  z-index: var(--z-avatar);
+
+  @include mobile {
+    // On mobile the fixed avatar would obscure content; hide it.
+    display: none;
+  }
+}
+
+.mobileTopBar {
+  align-items: center;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: none;
+  gap: var(--space-12);
+  height: 56px;
+  padding: 0 var(--space-12);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-mobile-bar);
+
+  @include mobile {
+    display: flex;
+    grid-column: 1 / -1;
+  }
+}
+
+.mobileTitle {
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
+
+.menuButton {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  cursor: pointer;
+  display: inline-flex;
+  // WCAG 2.5.5 / Apple HIG minimum touch target: 44x44.
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.menuIcon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  span {
+    background: currentcolor;
+    border-radius: 2px;
+    display: block;
+    height: 2px;
+    width: 18px;
+  }
+}
+
+.backdrop {
+  background: var(--color-overlay);
+  border: 0;
+  display: none;
+  inset: 0;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity var(--transition-slow);
+  z-index: var(--z-backdrop);
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.backdropVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@include mobile {
+  .app {
+    grid-template-columns: 1fr;
+  }
+}

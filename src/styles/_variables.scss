@@ -1,0 +1,155 @@
+// Design tokens, exposed as CSS custom properties so component .module.scss
+// files can consume them via var(--…) without needing to @use this file.
+//
+// Naming conventions:
+//   --color-*           palette and semantic colors
+//   --space-N           N pixels (numeric scale, 2px increments up to 32px)
+//   --radius-*          corner radii
+//   --shadow-*          elevation shadows
+//   --font-size-*       font sizes (named scale)
+//   --font-weight-*     font weights (named scale)
+//   --line-height-*     line heights
+//   --transition-*      durations + easing
+//   --z-*               z-index layers
+//   --rail-*, --sidebar-*, --card-*    layout / component-level tokens
+
+:root {
+  // --------------------------------------------------------------------
+  // Color: brand / accent
+  // --------------------------------------------------------------------
+  --color-primary: #5c00dc;
+  --color-primary-hover: #4a00b3;
+  --color-primary-soft: #f1eaff;
+  --color-pink: #e71356;
+  --color-violet-light: #ab99ff;
+
+  // --------------------------------------------------------------------
+  // Color: surfaces
+  // --------------------------------------------------------------------
+  --color-bg: #ffffff;
+  --color-bg-rail: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f6f6f8;
+  --color-surface-muted-hover: #f1f1f4;
+
+  // --------------------------------------------------------------------
+  // Color: text
+  // --------------------------------------------------------------------
+  --color-text: #111827;
+  --color-text-strong: #0f172a;
+  --color-text-muted: #6b7280;
+  --color-text-subtle: #9ca3af;
+
+  // --------------------------------------------------------------------
+  // Color: borders / dividers
+  // --------------------------------------------------------------------
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+
+  // --------------------------------------------------------------------
+  // Color: indicators / misc
+  // --------------------------------------------------------------------
+  --color-indicator: #9ca3af;
+  --color-avatar-bg: #4b4b52;
+  --color-overlay: rgb(0 0 0 / 40%);
+
+  // --------------------------------------------------------------------
+  // Spacing (numeric scale, named by px value)
+  // --------------------------------------------------------------------
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-22: 22px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-48: 48px;
+  --space-96: 96px;
+
+  // --------------------------------------------------------------------
+  // Radii
+  // --------------------------------------------------------------------
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+
+  // --------------------------------------------------------------------
+  // Shadows
+  // --------------------------------------------------------------------
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 4%);
+  --shadow-md: 0 4px 12px rgb(15 23 42 / 6%);
+  --shadow-avatar: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+  --shadow-drawer: 0 20px 60px rgb(0 0 0 / 25%);
+
+  // --------------------------------------------------------------------
+  // Typography
+  // --------------------------------------------------------------------
+  --font-sans:
+    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 28px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.45;
+  --line-height-relaxed: 1.5;
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-wide: 0.02em;
+
+  // --------------------------------------------------------------------
+  // Transitions (reused across hovers, drawer slide, card lift)
+  // --------------------------------------------------------------------
+  --transition-fast: 0.12s ease;
+  --transition-base: 0.15s ease;
+  --transition-slow: 0.24s ease;
+
+  // --------------------------------------------------------------------
+  // Z-index scale (keeps stacking order in one place)
+  // --------------------------------------------------------------------
+  --z-mobile-bar: 40;
+  --z-avatar: 50;
+  --z-backdrop: 55;
+  --z-drawer: 60;
+
+  // --------------------------------------------------------------------
+  // Layout
+  // --------------------------------------------------------------------
+  --rail-width: 56px;
+  --sidebar-width: 248px;
+  --content-max-width: 1200px;
+
+  // --------------------------------------------------------------------
+  // Card tokens (consumed by every card-shaped surface: BaseSettingsCard,
+  // WorkflowCard, PortalCard — see also the `card-interactive` mixin)
+  // --------------------------------------------------------------------
+  --card-bg: var(--color-surface);
+  --card-border: 1px solid var(--color-border);
+  --card-border-hover: 1px solid var(--color-border-strong);
+  --card-radius: var(--radius-lg);
+  --card-shadow: var(--shadow-sm);
+  --card-shadow-hover: var(--shadow-md);
+  --card-padding: var(--space-20) var(--space-22) var(--space-22);
+  --card-padding-comfortable: var(--space-24) var(--space-28);
+  --card-min-height: 116px;
+}

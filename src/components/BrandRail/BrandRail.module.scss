@@ -1,0 +1,51 @@
+.rail {
+  align-items: center;
+  background-color: var(--color-bg-rail);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding: var(--space-14) 0;
+  width: var(--rail-width);
+}
+
+.brand {
+  align-items: center;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  text-decoration: none;
+  width: 40px;
+
+  img {
+    height: 42px;
+    width: 32px;
+  }
+}
+
+.eventTile {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  height: 40px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+  transition: border-color var(--transition-base);
+  width: 40px;
+
+  &:hover {
+    border-color: var(--color-border-strong);
+  }
+
+  img {
+    border-radius: var(--radius-sm);
+    height: 32px;
+    object-fit: cover;
+    width: 32px;
+  }
+}

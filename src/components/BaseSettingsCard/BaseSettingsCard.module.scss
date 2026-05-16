@@ -1,0 +1,43 @@
+@use '../../styles/mixins' as *;
+
+.card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding-comfortable);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-32);
+  grid-template-columns: minmax(0, 0.7fr) repeat(2, minmax(0, 1fr));
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mobile {
+    gap: var(--space-20);
+    grid-template-columns: 1fr;
+  }
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}

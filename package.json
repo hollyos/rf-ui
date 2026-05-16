@@ -1,0 +1,59 @@
+{
+  "name": "rainfocus-ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "RainFocus UI Challenge - React + Vite + SSR single-page application (TypeScript)",
+  "scripts": {
+    "dev": "node --import tsx/esm server.ts",
+    "build": "pnpm typecheck && pnpm build:client && pnpm build:server && pnpm prerender",
+    "build:client": "vite build --outDir dist/client --ssrManifest",
+    "build:server": "vite build --outDir dist/server --ssr src/entry-server.tsx",
+    "prerender": "node --import tsx/esm prerender.ts",
+    "preview": "vite preview --outDir dist/client",
+    "serve": "node --import tsx/esm serve.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,scss,css,json}\""
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/compression": "^1.7.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@types/serve-static": "^1.15.7",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
+    "@vitejs/plugin-react": "^4.3.2",
+    "compression": "^1.7.4",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.12",
+    "express": "^4.21.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.3.3",
+    "sass": "^1.79.4",
+    "serve-static": "^1.16.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vitest": "^2.1.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

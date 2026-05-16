@@ -1,0 +1,92 @@
+@use '../../styles/mixins' as *;
+
+.guide {
+  max-width: var(--content-max-width);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  padding-bottom: var(--space-28);
+}
+
+.title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.subtitle {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  max-width: 720px;
+}
+
+.divider {
+  background: var(--color-border);
+  border: 0;
+  height: 1px;
+  margin: 0 0 var(--space-28);
+}
+
+.sectionHead {
+  align-items: center;
+  display: flex;
+  gap: var(--space-12);
+  padding-bottom: var(--space-20);
+
+  img {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.sectionTitle {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.step {
+  margin-bottom: var(--space-28);
+}
+
+.stepLabel {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  padding-bottom: var(--space-12);
+
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.workflowGrid {
+  display: grid;
+  gap: var(--space-18);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portalRow {
+  display: grid;
+  gap: var(--space-18);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}

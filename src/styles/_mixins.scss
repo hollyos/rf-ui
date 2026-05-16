@@ -1,0 +1,78 @@
+// SCSS mixins. CSS custom properties cover individual *values*; these
+// mixins capture *patterns* of declarations that repeat across components
+// (interactive card, focus ring, screen-reader-only).
+//
+// The mixins themselves only reference CSS custom properties so design
+// changes still flow through `_variables.scss`.
+
+// ---------- Breakpoints -----------------------------------------------
+
+// Tablet and below (≤1024px).
+@mixin tablet-down {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Mobile (≤640px) — covers everything down to 320px.
+@mixin mobile {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+// Small mobile (≤380px) — for tightest layout adjustments.
+@mixin mobile-sm {
+  @media (max-width: 380px) {
+    @content;
+  }
+}
+
+// ---------- Patterns --------------------------------------------------
+
+// Visually hidden but exposed to assistive tech.
+@mixin sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+// Focus ring used across interactive elements.
+@mixin focus-ring {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Interactive card surface: WorkflowCard (default variant) and PortalCard
+// share this exact pattern. Hover lifts the card; focus shows a ring.
+@mixin card-interactive {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  font: inherit;
+  min-height: var(--card-min-height);
+  padding: var(--card-padding);
+  text-align: left;
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

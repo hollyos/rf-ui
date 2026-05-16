@@ -1,0 +1,133 @@
+@use '../../styles/mixins' as *;
+
+.sidebar {
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  padding: var(--space-22) var(--space-16) var(--space-24);
+  width: var(--sidebar-width);
+
+  @include mobile {
+    width: min(86vw, 320px);
+  }
+}
+
+.header {
+  padding: 0 var(--space-4);
+}
+
+.title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.meta {
+  align-items: center;
+  color: var(--color-text-muted);
+  display: flex;
+  font-size: var(--font-size-xs);
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.dot {
+  background-color: var(--color-text-muted);
+  border-radius: 50%;
+  height: 3px;
+  width: 3px;
+}
+
+.search {
+  margin: var(--space-14) 0 var(--space-6);
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) 0;
+}
+
+.navItem {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  gap: var(--space-12);
+  padding: var(--space-10) var(--space-12);
+  text-align: left;
+  transition: background-color var(--transition-fast);
+  width: 100%;
+
+  &:hover {
+    background-color: var(--color-surface-muted);
+  }
+}
+
+.navItemActive {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary-soft);
+  }
+}
+
+.navLabel {
+  flex: 1;
+}
+
+.indicator {
+  background-color: var(--color-indicator);
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.indicatorActive {
+  background-color: var(--color-primary);
+}
+
+.subList {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) 0 var(--space-6) 40px;
+}
+
+.subItem {
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-8) var(--space-4);
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+// Active child: subtle echo of the parent's "active" purple treatment.
+// Slightly heavier weight + primary color, no background fill (the parent
+// row already carries the section's purple-soft background).
+.subItemActive {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

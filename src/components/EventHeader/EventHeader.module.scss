@@ -1,0 +1,80 @@
+@use '../../styles/mixins' as *;
+
+.header {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--space-24);
+  justify-content: space-between;
+  padding-bottom: var(--space-36);
+}
+
+.lead {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--space-18);
+  min-width: 0;
+}
+
+.thumb {
+  background-color: #f5ece1;
+  border-radius: var(--radius-xl);
+  flex: 0 0 auto;
+  height: 88px;
+  overflow: hidden;
+  width: 88px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @include mobile {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-6);
+
+  @include mobile {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-2);
+  }
+}
+
+.meta {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-snug);
+}
+
+.actions {
+  flex-shrink: 0;
+  padding-top: var(--space-6);
+}
+
+@include mobile {
+  .header {
+    flex-wrap: wrap;
+    padding-bottom: var(--space-24);
+  }
+
+  .actions {
+    padding-top: 0;
+    width: 100%;
+  }
+}
