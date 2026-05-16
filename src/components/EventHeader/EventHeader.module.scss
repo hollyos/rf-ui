@@ -3,14 +3,28 @@
 .header {
   align-items: flex-start;
   display: flex;
+  // Always allow wrapping. When the lead's natural width plus the button
+  // exceeds the available row, the button drops onto its own row instead
+  // of squeezing the heading mid-word. Without this the layout collapses
+  // ungracefully somewhere around 640–900px (between the mobile and
+  // desktop sweet spots).
+  flex-wrap: wrap;
   gap: var(--space-24);
-  justify-content: space-between;
   padding-bottom: var(--space-36);
+
+  @include mobile {
+    padding-bottom: var(--space-24);
+  }
 }
 
 .lead {
   align-items: flex-start;
   display: flex;
+  // `flex: 1 1 auto` lets the lead claim the row when the button has
+  // wrapped below; combined with `min-width: 0` it can also shrink for
+  // very long titles. The basis stays `auto` so the natural content
+  // width is what the wrap algorithm tests against.
+  flex: 1 1 auto;
   gap: var(--space-18);
   min-width: 0;
 }
@@ -64,16 +78,16 @@
 
 .actions {
   flex-shrink: 0;
+  // `margin-left: auto` right-aligns the button whether it's beside the
+  // lead (same as justify-content: space-between would do) OR alone on
+  // its own row after wrapping. On mobile we clear the auto margin and
+  // stretch the button so it fills the row, matching the existing
+  // mobile design.
+  margin-left: auto;
   padding-top: var(--space-6);
-}
 
-@include mobile {
-  .header {
-    flex-wrap: wrap;
-    padding-bottom: var(--space-24);
-  }
-
-  .actions {
+  @include mobile {
+    margin-left: 0;
     padding-top: 0;
     width: 100%;
   }
